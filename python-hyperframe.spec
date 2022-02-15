@@ -1,7 +1,7 @@
 %define module	hyperframe
 
 Name:		python-%{module}
-Version:	5.2.0
+Version:	6.0.1
 Release:	1
 Summary:	HTTP/2 framing layer for Python
 Group:		Development/Python
@@ -23,6 +23,13 @@ stream into HTTP/2 frames.
 This library is used directly by hyper and a number of other projects
 to provide HTTP/2 frame decoding logic.
 
+%files
+%doc CONTRIBUTORS.rst LICENSE README.rst
+%{python_sitelib}/%{module}/
+%{python_sitelib}/%{module}-%{version}-py%{python_version}.egg-info/
+
+#----------------------------------------------------------------------------
+
 %prep
 %setup -q -n %{module}-%{version}
 
@@ -34,8 +41,3 @@ rm -rf %{module}.egg-info
 
 %install
 %py_install
-
-%files
-%doc CONTRIBUTORS.rst HISTORY.rst LICENSE README.rst
-%{python_sitelib}/%{module}/
-%{python_sitelib}/%{module}-%{version}-py%{python_version}.egg-info/

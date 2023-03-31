@@ -2,7 +2,7 @@
 
 Name:		python-%{module}
 Version:	6.0.1
-Release:	3
+Release:	4
 Summary:	HTTP/2 framing layer for Python
 Group:		Development/Python
 License:	MIT

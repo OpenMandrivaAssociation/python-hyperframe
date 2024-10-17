@@ -6,7 +6,7 @@ Release:	4
 Summary:	HTTP/2 framing layer for Python
 Group:		Development/Python
 License:	MIT
-URL:		http://hyper.rtfd.org/
+URL:		https://hyper.rtfd.org/
 Source0:	https://pypi.io/packages/source/h/hyperframe/%{module}-%{version}.tar.gz
 
 BuildRequires:	pkgconfig(python)

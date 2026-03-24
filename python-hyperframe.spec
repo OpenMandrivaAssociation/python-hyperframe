@@ -1,19 +1,20 @@
-%define module	hyperframe
+%define module hyperframe
 
 Name:		python-%{module}
-Version:	6.0.1
-Release:	5
+Version:	6.1.0
+Release:	1
 Summary:	HTTP/2 framing layer for Python
 Group:		Development/Python
 License:	MIT
-URL:		https://hyper.rtfd.org/
-Source0:	https://pypi.io/packages/source/h/hyperframe/%{module}-%{version}.tar.gz
+URL:		https://github.com/python-hyper/hyperframe
+Source0:	%{URL}/archive/v%{version}/%{name}-%{version}.tar.gz
 
-BuildRequires:	pkgconfig(python)
-BuildRequires:	python3dist(setuptools)
-%{?python_provide:%python_provide python3-%{module}}
-
+BuildSystem:	python
 BuildArch:	noarch
+BuildRequires:	pkgconfig(python3)
+BuildRequires:	python%{pyver}dist(pip)
+BuildRequires:	python%{pyver}dist(setuptools)
+BuildRequires:	python%{pyver}dist(wheel)
 
 %description
 This library contains the HTTP/2 framing code used in the hyper project.
@@ -24,20 +25,6 @@ This library is used directly by hyper and a number of other projects
 to provide HTTP/2 frame decoding logic.
 
 %files
-%doc CONTRIBUTORS.rst LICENSE README.rst
+%doc CONTRIBUTORS.rst README.rst
 %{python_sitelib}/%{module}/
-%{python_sitelib}/%{module}-%{version}-py%{python_version}.egg-info/
-
-#----------------------------------------------------------------------------
-
-%prep
-%setup -q -n %{module}-%{version}
-
-# Remove bundled egg-info
-rm -rf %{module}.egg-info
-
-%build
-%py_build
-
-%install
-%py_install
+%{python_sitelib}/%{module}-%{version}.dist-info
